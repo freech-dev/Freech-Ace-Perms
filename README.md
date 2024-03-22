@@ -14,6 +14,7 @@ Roles - These follow the format of ```lua{"ROLEID", group.permission},``` and sh
 
 This is a example server_config.lua file
 
+```lua
 Config = {}
 
 Config.permissions = {
