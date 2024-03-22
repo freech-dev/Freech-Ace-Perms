@@ -24,7 +24,7 @@ This is a example server_config.lua file
 Config = {}
 
 Config.permissions = {
-    BotToken = "MTE0MAzODU5MjA4MA.GVtTp38iC6ITcCjkzDJBKtrYeiTbAG8iIM",
+    BotToken = "MTE0MAzODU5MjA4MAGVtTp38iC6ITcCjkzDJBKtrYeiTbAG8iIM",
     Guild = "937762007401254981",
     Roles = {
         {"937780365861478420", group.firstperm},
