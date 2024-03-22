@@ -4,6 +4,12 @@ Freech framework is a discord link script that manages the link between your Fiv
 
 Feel free to addd anything to this script in tems of exports ect. Just hmu if you have any questions @freech_dev
 
+# Freech's Development 
+
+Join this discord for any support questions 
+
+https://discord.gg/xfp9xCJNKV
+
 ### Configuration
 
 ##### BotToken - This should be your bot token of the bot that will do the requests (NOTE: Must be in the server that you are requesting from)
