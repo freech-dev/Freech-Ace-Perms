@@ -18,5 +18,7 @@ client_scripts({
 
 exoports ({
     'LoadPermissions',
-    'CheckPermissions'
+    'CheckPermissions',
+    'GetUserInfo',
+    'GetUserID',
 });
