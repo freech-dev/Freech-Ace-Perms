@@ -16,6 +16,7 @@ RegisterCommand('refreshperms', function(source, args, rawCommand)
         PlayersPerms[source] = nil
     end
     LoadPermissions(source)
+    TriggerClientEvent('chat:addMessage', source, "[Freech Framework] Your permissions have been refreshed.")
 end, false)
 
 -------------------
