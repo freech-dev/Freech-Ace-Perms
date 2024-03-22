@@ -33,9 +33,9 @@ Config.permissions = {
 }
 ```
 
-##### Developer Guide 
+### Developer Guide 
 
-### Exports
+#### Exports
 
 | Export Name  | Export Use | Export Parameters  | 
 | ------------- | ------------- | ------------- |
