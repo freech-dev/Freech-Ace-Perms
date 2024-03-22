@@ -1,10 +1,19 @@
 local PlayersPerms = {}
+local ApiCalls = 0
+local RateLimited = false
 
 -------------------
 --   COMMANDS    --
 -------------------
 
 RegisterCommand('refreshperms', function(source, args, rawCommand)
+    if PlayersPerms[source] then
+        for i = 1, #PlayersPerms[source] do
+            ExecuteCommand("remove_principal identifier.discord:" .. GetUserID(source) .. " " .. PlayersPerms[source][i])
+        end
+
+        PlayersPerms[source] = nil
+    end
     LoadPermissions(source)
 end, false)
 
@@ -41,18 +50,42 @@ AddEventHandler('playerDropped', function(reason)
     end
 end)
 
+Citizen.CreateThread(function()
+    while true do 
+        Wait(1000)
+        if ApiCalls > 48 then 
+            print('[Freech Framework] Discord ratelimited, Stalling joins for 20 seconds')
+            RateLimited = true 
+            Wait(2000)
+            ApiCalls = 0
+            RateLimited = false
+        else 
+            ApiCalls = 0
+            RateLimited = false
+        end
+    end
+end)
+
 ---------------
 -- FUNCTIONS -- 
 ---------------
 
 function Request(userid, callback)
-    local url = 'https://discordapp.com/api/guilds/' .. Config.Guild .. '/members/' .. userid
+    if RateLimited then 
+        print("[Freech Framework] Ratelimit hit denying API Call")
+        return 
+    end 
+    ApiCalls = ApiCalls + 1
+    print("ApiCalls: " .. ApiCalls)
+    local url = 'https://discordapp.com/api/guilds/' .. Config.permissions.Guild .. '/members/' .. userid
     local headers = {
         ['Content-Type'] = 'application/json',
-        ['Authorization'] = 'Bot ' .. Config.Bot_Token
+        ['Authorization'] = 'Bot ' .. Config.permissions.BotToken
     }
     PerformHttpRequest(url, function(errorCode, resultData, resultHeaders)
-        callback(errorCode, resultData, resultHeaders)
+        if errorCode ~= 429 then 
+            callback(errorCode, resultData, resultHeaders)
+        end
     end, 'GET', '', headers)
 end
 
