@@ -4,13 +4,13 @@ Freech framework is a discord link script that manages the link between your Fiv
 
 Feel free to addd anything to this script in tems of exports ect. Just hmu if you have any questions @freech_dev
 
-#### Configuration
+### Configuration
 
-BotToken - This should be your bot token of the bot that will do the requests (NOTE: Must be in the server that you are requesting from)
+##### BotToken - This should be your bot token of the bot that will do the requests (NOTE: Must be in the server that you are requesting from)
 
-Guild - This is the guild id that you want to fetch the roles form (NOTE: The bot must be in the guild and the roles should only be in that guild)
+##### Guild - This is the guild id that you want to fetch the roles form (NOTE: The bot must be in the guild and the roles should only be in that guild)
 
-Roles - These follow the format of ```{"ROLEID", group.permission},``` and should allways follow that format
+##### Roles - These follow the format of ```{"ROLEID", group.permission},``` and should allways follow that format
 
 This is a example server_config.lua file
 
