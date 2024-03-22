@@ -77,7 +77,6 @@ function Request(userid, callback)
         return 
     end 
     ApiCalls = ApiCalls + 1
-    print("ApiCalls: " .. ApiCalls)
     local url = 'https://discordapp.com/api/guilds/' .. Config.permissions.Guild .. '/members/' .. userid
     local headers = {
         ['Content-Type'] = 'application/json',

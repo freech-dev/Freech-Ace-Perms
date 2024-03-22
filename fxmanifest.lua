@@ -4,6 +4,7 @@ games({ 'gta5' })
 
 shared_script({
     'server_config.lua',
+    'client_config.lua',
     'shared_functions.lua'
 });
 
