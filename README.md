@@ -10,7 +10,7 @@ BotToken - This should be your bot token of the bot that will do the requests (N
 
 Guild - This is the guild id that you want to fetch the roles form (NOTE: The bot must be in the guild and the roles should only be in that guild)
 
-Roles - These follow the format of ```lua{"ROLEID", group.permission},``` and should allways follow that format
+Roles - These follow the format of ```{"ROLEID", group.permission},``` and should allways follow that format
 
 This is a example server_config.lua file
 
@@ -25,3 +25,4 @@ Config.permissions = {
         {"937780365861478420", group.secondperm}
     }
 }
+```
