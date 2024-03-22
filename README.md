@@ -32,3 +32,12 @@ Config.permissions = {
     }
 }
 ```
+
+##### Developer Guide 
+
+### Exports
+
+| Export Name  | Export Use | Export Parameters  | 
+| ------------- | ------------- | ------------- |
+| ```LoadPermissions```  | Reload a users permissions and ace permissions  | User  |
+| ```CheckPermissions```  | Content Cell  | User, Role ID  |
