@@ -40,4 +40,8 @@ Config.permissions = {
 | Export Name  | Export Use | Export Parameters  | 
 | ------------- | ------------- | ------------- |
 | ```LoadPermissions```  | Reload a users permissions and ace permissions  | User  |
-| ```CheckPermissions```  | Content Cell  | User, Role ID  |
+| ```CheckPermissions```  | Checks if user has a role or not and returns true or calse  | User, Role ID  |
+| ```GetUserInfo```  | Retreive a users roles  | User  |
+| ```GetUserID```  | Retreive a users discord id  | User  |
+
+
