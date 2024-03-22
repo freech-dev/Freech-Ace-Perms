@@ -1,5 +1,0 @@
-RegisterCommand('dvall', function(source, args, rawCommand)
-    Notify(source, "DV Started", "Your vehicles will be deleted in " .. Config.DVAllTime .. " seconds", "server")
-    Citizen.Wait(Config.DVAllTime * 1000)
-    TriggerClientEvent('fd-framework:dvall:trigger', -1)
-end, true)
