@@ -1,4 +1,5 @@
 local PlayersPerms = {}
+local PlayerRoles = {}
 local ApiCalls = 0
 local RateLimited = false
 
@@ -130,6 +131,7 @@ function LoadPermissions(source)
                 for j = 1, #Config.permissions.Roles do
                     if string.match(userRoles[i], Config.permissions.Roles[j][1]) then
                         table.insert(PlayersPerms[source], Config.permissions.Roles[j][2])
+                        table.insert(PlayerRoles[source], Config.permissions.Roles[j][1])
                         ExecuteCommand("add_principal identifier.discord:" .. GetUserID(source) .. Config.permissions.Roles[j][2])
                         print("[Freech Framework] Permission Added " .. GetUserID(source) .. " to role group " .. Config.permissions.Roles[j][2]);
                     end
@@ -139,22 +141,15 @@ function LoadPermissions(source)
     end)
 end
 
-function GetRoleId(source, permission)
-    if PlayersPerms[source] then
-        for i = 1, #PlayersPerms[source] do
-            for j = 1, #Config.permissions.Roles do
-                if PlayersPerms[source][i] == Config.permissions.Roles[j][2] and Config.permissions.Roles[j][1] == permission then
-                    return Config.permissions.Roles[j][1]
-                end
+function CheckPermissions(source, role)
+    if PlayerRoles[source] then 
+        for i = 1, #PlayerRoles[source] do
+            if string.match(PlayerRoles[source][i], role) then
+                return true
             end
         end
     end
-    return nil
-end
-
-function HasPermission(source, permission)
-    local roleId = GetRoleId(source, permission)
-    return roleId ~= nil
+    return false
 end
 
 
