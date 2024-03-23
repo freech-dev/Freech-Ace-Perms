@@ -8,15 +8,18 @@ local RateLimited = false
 -------------------
 
 RegisterCommand('refreshperms', function(source, args, rawCommand)
+    if Config.DebugMode then print('[Freech Framework] Refresh Perms Called') end
     if PlayersPerms[source] then
         for i = 1, #PlayersPerms[source] do
             ExecuteCommand("remove_principal identifier.discord:" .. GetUserID(source) .. " " .. PlayersPerms[source][i])
+            if Config.DebugMode then print("[Freech Framework] Removed Permission " .. PlayersPerms[source][i] .. " for " .. GetUserID(source)) end
         end
 
         PlayersPerms[source] = nil
     end
     LoadPermissions(source)
     TriggerClientEvent('chat:addMessage', source, "[Freech Framework] Your permissions have been refreshed.")
+    if Config.DebugMode then print("[Freech Framework] Permissions refreshed for " .. GetUserID(source)) end
 end, false)
 
 -------------------
@@ -24,6 +27,7 @@ end, false)
 -------------------
 
 AddEventHandler('playerConnecting', function(name, setKickReason)
+    if Config.DebugMode then print('[Freech Framework] Player Connecting Called') end
     local src = source
     local identifiers = GetPlayerIdentifiers(src)
     local hasDiscord = false
@@ -38,17 +42,22 @@ AddEventHandler('playerConnecting', function(name, setKickReason)
     if not hasDiscord then
         setKickReason("[Freech Framework] Discord identifier not found please relog")
         CancelEvent()
+        if Config.DebugMode then print("[Freech Framework] Kicked Player " .. name .. " ID: " .. src .. " for no discord identifier") end
     else
         LoadPermissions(src)
+        if Config.DebugMode then print("[Freech Framework] Permissions Loaded for " .. name .. " ID: " .. src) end
     end
 end)
 
 AddEventHandler('playerDropped', function(reason)
+    if Config.DebugMode then print('[Freech Framework] Player Dropped Called') end
     if PlayersPerms[source] then
         for i = 1, #PlayersPerms[source] do
             ExecuteCommand("remove_principal identifier.discord:" .. GetUserID(source) .. " " .. PlayersPerms[source][i])
+            if Config.DebugMode then print("[Freech Framework] Removed Permission " .. PlayersPerms[source][i] .. " for " .. GetUserID(source)) end
         end
         PlayersPerms[source] = nil
+        if Config.DebugMode then print("[Freech Framework] Removed all permissions for " .. GetUserID(source)) end
     end
 end)
 
@@ -78,7 +87,7 @@ function Request(userid, callback)
         return 
     end 
     ApiCalls = ApiCalls + 1
-    local url = 'https://discordapp.com/api/guilds/' .. Config.permissions.Guild .. '/members/' .. userid
+    if Config.DebugMode then print("[Freech Framework] Making API Call " .. userid) end    local url = 'https://discordapp.com/api/guilds/' .. Config.permissions.Guild .. '/members/' .. userid
     local headers = {
         ['Content-Type'] = 'application/json',
         ['Authorization'] = 'Bot ' .. Config.permissions.BotToken
@@ -136,6 +145,7 @@ function LoadPermissions(source)
                     end
                 end
             end 
+            discordLogs(message)
         end
     end)
 end
@@ -151,6 +161,9 @@ function CheckPermissions(source, role)
     return false
 end
 
+function discordLogs(message)
 
--- This is only credit part so please do not remove it
+end
+
+-- This is only credit part so please do not remove it :)
 print("[Freech Framework] Freech Framework, Make by freech_dev")
