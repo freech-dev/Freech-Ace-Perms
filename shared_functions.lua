@@ -1,4 +1,4 @@
-function ExtractIdentifiers(src)
+    function ExtractIdentifiers(src)
     local identifiers = {
         steam = "",
         ip = "",
