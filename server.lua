@@ -40,7 +40,7 @@ AddEventHandler('playerConnecting', function(name, setKickReason)
     end
 
     if not hasDiscord then
-        setKickReason("[Freech Framework] Discord identifier not found please relog")
+        dropPlayer(src, "[Freech Framework] Discord identifier not found please relog")
         CancelEvent()
         if Config.DebugMode then print("[Freech Framework] Kicked Player " .. name .. " ID: " .. src .. " for no discord identifier") end
     else
