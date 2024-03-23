@@ -14,7 +14,7 @@ client_scripts({
     'client.lua',
 });
 
-exoports ({
+server_exports ({
     'LoadPermissions',
     'CheckPermissions',
     'GetUserInfo',
