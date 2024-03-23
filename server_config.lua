@@ -4,6 +4,6 @@ Config.permissions = {
     BotToken = "BOTTOKEN",
     Guild = "GUILDID",
     Roles = {
-        {"ROLEID", group.firstperm},
+        {"ROLEID", "group.firstperm"},
     }
 }

@@ -16,7 +16,7 @@ Join this discord for any support questions
 
 ##### Guild - This is the guild id that you want to fetch the roles form (NOTE: The bot must be in the guild and the roles should only be in that guild)
 
-##### Roles - These follow the format of ```{"ROLEID", group.permission},``` and should allways follow that format
+##### Roles - These follow the format of ```{"ROLEID", "group.permission"},``` and should allways follow that format
 
 This is a example server_config.lua file
 
@@ -27,8 +27,8 @@ Config.permissions = {
     BotToken = "MTE0MAzODU5MjA4MAGVtTp38iC6ITcCjkzDJBKtrYeiTbAG8iIM",
     Guild = "937762007401254981",
     Roles = {
-        {"937780365861478420", group.firstperm},
-        {"937780365861478420", group.secondperm}
+        {"937780365861478420", "group.firstperm"},
+        {"937780365861478420", "group.secondperm"}
     }
 }
 ```
