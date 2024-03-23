@@ -131,7 +131,6 @@ function LoadPermissions(source)
                 for j = 1, #Config.permissions.Roles do
                     if string.match(userRoles[i], Config.permissions.Roles[j][1]) then
                         table.insert(PlayersPerms[source], Config.permissions.Roles[j][2])
-                        table.insert(PlayerRoles[source], Config.permissions.Roles[j][1])
                         ExecuteCommand("add_principal identifier.discord:" .. GetUserID(source) .. Config.permissions.Roles[j][2])
                         print("[Freech Framework] Permission Added " .. GetUserID(source) .. " to role group " .. Config.permissions.Roles[j][2]);
                     end
