@@ -1,3 +1,12 @@
+--[[
+
+	Freech-Framework (server.lua)
+    Made by @freech_dev
+
+	DO NOT EDIT THIS IF YOU DON'T KNOW WHAT YOU ARE DOING
+]]
+
+
 local PlayersPerms = {}
 local PlayerRoles = {}
 local ApiCalls = 0
