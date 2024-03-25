@@ -7,10 +7,6 @@ server_scripts({
     'config.lua',
 });
 
-client_scripts({
-    'client.lua',
-});
-
 server_exports ({
     'LoadPermissions',
     'CheckPermissions',
