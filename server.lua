@@ -159,19 +159,15 @@ function LoadPermissions(source)
     end)
 end
 
-function CheckPermissions(source, role)
-    if PlayerRoles[source] then 
-        for i = 1, #PlayerRoles[source] do
-            if string.match(PlayerRoles[source][i], role) then
+function hasPermission(source, role)
+    if grantedRoles[source] then
+        for _, permission in pairs(grantedRoles[source]) do
+            if permission == role then
                 return true
             end
         end
     end
     return false
-end
-
-function discordLogs(message)
-
 end
 
 -- This is only credit part so please do not remove it :)
